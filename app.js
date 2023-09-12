@@ -16,4 +16,6 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true });
 app.use('/',jokeRoutes);
 
 
-app.listen(3000);
+app.listen(3000,()=>{
+    console.log("server is up and running !");
+});
