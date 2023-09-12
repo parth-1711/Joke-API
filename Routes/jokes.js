@@ -3,10 +3,10 @@ const Jokes = require("../Models/jokes");
 
 const router = express.Router();
 
-router.get('/',async(req,res,next)=>{
-    const foundjokes = await Jokes.find();
-    res.json(foundjokes);
-})
+// router.get('/',async(req,res,next)=>{
+//     const foundjokes = await Jokes.find();
+//     res.json(foundjokes);
+// })
 
 //get Request to get a random joke.
 router.get("/random", async (req, res, next) => {
