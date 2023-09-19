@@ -10,9 +10,9 @@ const router = express.Router();
 
 //get Request to get a random joke.
 router.get("/random", async (req, res, next) => {
-  const foundjokes = await Jokes.find();
-  const randomInd = Math.floor(Math.random() * foundjokes.length);
-  res.json(foundjokes[randomInd]);
+  const randomInd = Math.floor(Math.random() * 200000);
+  const foundjokes = await Jokes.findOne().skip(randomInd);
+  res.json(foundjokes);
 });
 
 //get Request to get a joke with given Id.
