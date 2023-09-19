@@ -8,6 +8,12 @@ const router = express.Router();
 //     res.json(foundjokes);
 // })
 
+router.get("/", (req, res) => {
+  res.json({
+    message:
+      "There is no endpoint / here try /random for getting random joke ,/random/:id to get a joke with given id('1nahxq' is an example ID),/filter?score=val to get a joke with score val",
+  });
+});
 //get Request to get a random joke.
 router.get("/random", async (req, res, next) => {
   const randomInd = Math.floor(Math.random() * 200000);
@@ -80,12 +86,11 @@ router.patch("/jokes/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/jokes/:id",async(req,res,next)=>{
-    const ID = req.params.id;
-    const response = await Jokes.deleteOne({ id: ID });
-    if(response.deletedCount!=0){
-        res.status(201).json({message:"Joke deleted successfully !"});
-    }
-    else res.status(401).json({message:"Joke with given ID is not found !"})
-})
+router.delete("/jokes/:id", async (req, res, next) => {
+  const ID = req.params.id;
+  const response = await Jokes.deleteOne({ id: ID });
+  if (response.deletedCount != 0) {
+    res.status(201).json({ message: "Joke deleted successfully !" });
+  } else res.status(401).json({ message: "Joke with given ID is not found !" });
+});
 module.exports = router;
